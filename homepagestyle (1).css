@@ -1,0 +1,73 @@
+body{
+  height: 100vh;
+  margin: 0; 
+}
+
+.sidebar{
+  height: 100%;
+  position: fixed;
+
+  background-color: rgba(11, 110, 181, 0.748);
+  width: 180px;
+}
+.logo-holder{
+  height: 140px;
+  width: 90%;
+  margin-left: 8px;
+  
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  border-radius: 8px;
+}
+.holder{
+  margin-top: 30px;
+  background-color: rgba(129, 181, 209, 0.858);
+}
+.logo{
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+}
+.holder{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5px;  
+  height: 50px;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+.img{
+  height: 40px;
+  width: 40px;
+  margin-left: 15px;
+  margin-right: 20px;
+}  
+.image_name{
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+.main {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.chatbot-sidebar {
+  width: 300px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow-y: auto;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Runner (Pyodide)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+  <style>
+    html, body { height: 100%; }
+    #editor { tab-size: 4; }
+  </style>
+</head>
+<body class="min-h-full bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+      <h1 class="text-lg font-semibold">Python Runner (Pyodide)</h1>
+      <span id="status" class="ml-auto text-sm text-slate-600">loading Python…</span>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl p-4 grid gap-4 lg:grid-cols-2">
+    <section class="rounded-2xl border bg-white shadow-sm overflow-hidden flex flex-col">
+      <div class="flex items-center gap-2 border-b p-3">
+        <h2 class="font-medium">Editor</h2>
+        <div class="ml-auto flex items-center gap-2">
+          <button id="runBtn" class="rounded-2xl bg-indigo-600 text-white px-3 py-1.5 shadow disabled:opacity-50" disabled>▶ Run</button>
+        </div>
+      </div>
+      <textarea id="editor" class="flex-1 w-full resize-none p-4 font-mono text-sm leading-6 outline-none" spellcheck="false"></textarea>
+    </section>
+
+    <section class="rounded-2xl border bg-white shadow-sm overflow-hidden flex flex-col">
+      <div class="flex items-center gap-2 border-b p-3">
+        <h2 class="font-medium">Console</h2>
+      </div>
+      <pre id="console" class="flex-1 m-0 p-4 font-mono text-sm leading-6 overflow-auto"></pre>
+    </section>
+  </main>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const consoleEl = document.getElementById('console');
+    const runBtn = document.getElementById('runBtn');
+    const statusEl = document.getElementById('status');
+    let pyodide = null;
+
+    const SAMPLE = print('Hello from Python!');
+
+    function appendToConsole(text) {
+      consoleEl.textContent += text;
+      consoleEl.scrollTop = consoleEl.scrollHeight;
+    }
+
+    function setUIEnabled(ready) {
+      runBtn.disabled = !ready;
+    }
+
+    async function bootPyodide() {
+      statusEl.textContent = 'loading Python…';
+      setUIEnabled(false);
+      consoleEl.textContent = 'Initializing Pyodide…\n';
+      try {
+        pyodide = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/' });
+        pyodide.setStdout({ batched(data) { appendToConsole(data); } });
+        pyodide.setStderr({ batched(data) { appendToConsole(data); } });
+        statusEl.textContent = 'ready';
+        setUIEnabled(true);
+        editor.value = SAMPLE;
+      } catch (e) {
+        appendToConsole('\nFailed to initialize Pyodide:\n' + (e?.message || e) + '\n');
+        statusEl.textContent = 'error';
+      }
+    }
+
+    async function runCode() {
+      if (!pyodide) return;
+      const code = editor.value;
+      appendToConsole('\n>>> Running code…\n');
+      try {
+        await pyodide.runPythonAsync(code);
+        appendToConsole('\n>>> Finished.\n');
+      } catch (e) {
+        appendToConsole('\nTraceback (most recent call last):\n' + (e?.message || e) + '\n');
+      }
+    }
+
+    runBtn.addEventListener('click', runCode);
+
+    window.addEventListener('load', bootPyodide);
+  </script>
+</body>
+</html>
