@@ -1,0 +1,457 @@
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #1a1a1a;
+}
+
+/* 1. Landing Page (index.html) */
+.landing-header {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.landing-header img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.landing-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+}
+
+.landing-banner {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.landing-banner img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.get-started-section {
+  text-align: center;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: auto;
+}
+
+.btn-start {
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-start:hover {
+  background-color: #0056b3;
+}
+
+/* 2. Login Page (login.html) */
+.login-body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  margin: 0;
+}
+
+.login-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 320px;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+}
+
+.login-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  background: linear-gradient(90deg, #2193b0, #6dd5ed);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-card .error {
+  color: red;
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+}
+
+.login-card p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-card a {
+  color: #2193b0;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 3. Homepage (homepage.html) */
+.homepage-layout {
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar {
+  height: 100%;
+  position: fixed;
+  background-color: rgba(11, 110, 181, 0.748);
+  width: 180px;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.logo-holder {
+  height: 140px;
+  width: 90%;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+.logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+}
+
+.holder {
+  margin-top: 20px;
+  background-color: rgba(129, 181, 209, 0.858);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5px;
+  height: 50px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.holder:hover {
+  background-color: rgba(100, 160, 195, 0.95);
+}
+
+.holder .img {
+  height: 40px;
+  width: 40px;
+  margin-left: 15px;
+  margin-right: 20px;
+}
+
+.holder .image_name {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.main-content {
+  margin-left: 190px;
+  margin-right: 310px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.chatbot-sidebar {
+  width: 300px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.chatbot-sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.chatbot-sidebar input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chatbot-sidebar .btn-chat {
+  width: 100%;
+  padding: 8px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chatbot-response {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+/* 4. Course Topics (python.html, java.html, c.html, javascript.html) */
+.course-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.back-to-home {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.course-container h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 10px;
+}
+
+.topic {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topic span {
+  font-size: 1rem;
+}
+
+.topic span.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.topic-btns button {
+  padding: 8px 12px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.complete-btn {
+  background-color: #28a745;
+}
+
+.view-btn {
+  background-color: #007bff;
+}
+
+.reset-btn {
+  background-color: #f44336;
+  color: white;
+  display: block;
+  margin: 20px auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.jarvis-box {
+  margin-top: 20px;
+  background: #fff3cd;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ffeeba;
+  text-align: center;
+  font-weight: bold;
+  color: #856404;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 650px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+  color: red;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.modal-content pre {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+/* 5. Compiler (pycompiler.html) */
+.compiler-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.compiler-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.compiler-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.editor-box, .console-box {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 480px;
+}
+
+.box-title {
+  padding: 10px 15px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-textarea {
+  flex: 1;
+  padding: 15px;
+  font-family: monospace;
+  font-size: 14px;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.console-view {
+  flex: 1;
+  margin: 0;
+  padding: 15px;
+  background: #1e1e1e;
+  color: #00ff88;
+  font-family: monospace;
+  font-size: 14px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.btn-run {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
